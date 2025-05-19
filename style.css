@@ -1,31 +1,78 @@
-
 body {
-  font-family: sans-serif;
-  background: #f0f0f0;
-  color: #333;
-  padding: 20px;
-  max-width: 700px;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(120deg, #1b0033, #4b0049);
+  color: #fff;
+  margin: 0;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+section {
+  max-width: 800px;
+  width: 100%;
+  padding: 40px 20px;
   margin: auto;
-}
-.hidden {
   display: none;
+  animation: fadeIn 0.8s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
-.active {
+
+section.active {
   display: block;
 }
-section {
-  margin-top: 40px;
+
+h1, h2, h3 {
+  color: #ff8fe7;
+  text-align: center;
 }
+
+p, #phase-description, #phase-analysis, #summary {
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 20px 0;
+  color: #eee;
+}
+
 button {
   display: block;
-  margin: 20px 0;
-  padding: 12px;
-  background: #6200ea;
+  margin: 20px auto;
+  padding: 14px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff5cbf, #e60073);
   color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 92, 191, 0.4);
+  transition: transform 0.2s, background 0.3s;
 }
+
 button:hover {
-  background: #3700b3;
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #e60073, #ff5cbf);
+}
+
+#answers {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+#answers button {
+  width: 100%;
+  max-width: 500px;
+  font-size: 16px;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
