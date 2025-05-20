@@ -1,36 +1,45 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(120deg, #1b0033, #4b0049);
-  color: #fff;
+/* Reset + Base */
+html, body {
+  height: 100%;
   margin: 0;
-  padding: 0 20px;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  background: linear-gradient(120deg, #1b0033, #4b0049);
+  font-family: 'Segoe UI', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
 }
 
+/* Secções do Quiz */
 section {
-  max-width: 800px;
   width: 100%;
+  max-width: 800px;
+  min-height: 100vh;
   padding: 40px 20px;
   margin: auto;
   display: none;
-  animation: fadeIn 0.8s ease-in-out;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeIn 0.6s ease-in-out;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
 section.active {
-  display: block;
+  display: flex;
 }
 
+/* Títulos */
 h1, h2, h3 {
   color: #ff8fe7;
   text-align: center;
 }
 
+/* Texto geral */
 p, #phase-description, #phase-analysis, #summary {
   font-size: 18px;
   line-height: 1.6;
@@ -45,6 +54,7 @@ p, #phase-description, #phase-analysis, #summary {
   color: #f8f8f8;
 }
 
+/* Botões */
 button {
   display: block;
   margin: 20px auto;
@@ -65,6 +75,7 @@ button:hover {
   background: linear-gradient(90deg, #e60073, #ff5cbf);
 }
 
+/* Respostas */
 #answers {
   display: flex;
   flex-direction: column;
@@ -79,9 +90,15 @@ button:hover {
   text-align: center;
 }
 
+/* Mobile Responsivo */
 @media screen and (max-width: 600px) {
   body {
     padding: 10px;
+  }
+
+  section {
+    padding: 20px 10px;
+    min-height: auto;
   }
 
   button {
@@ -91,6 +108,7 @@ button:hover {
 
   #answers button {
     font-size: 14px;
+    padding: 12px;
   }
 
   h1, h2, h3 {
@@ -102,6 +120,7 @@ button:hover {
   }
 }
 
+/* Animação de entrada */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
