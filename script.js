@@ -3164,14 +3164,3 @@ const questions = [
     ]
   }
 ];
-// Gerar perguntas exemplo
-const questions = Array.from({ length: 120 }, (_, i) => ({
-  question: `Pergunta ${i + 1}`,
-  answers: [
-    { text: "Opção 1", value: "emocao" },
-    { text: "Opção 2", value: "desejo" },
-    { text: "Opção 3", value: "submissao" },
-    { text: "Opção 4", value: "dominancia" },
-    { text: "Opção 5", value: "exploracao" }
-  ]
-}));
