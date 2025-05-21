@@ -4,6 +4,9 @@
   emailjs.init("user_demoKEY"); // substituir por o teu user ID real do EmailJS
 })();
 
+let respostasPorFase = [];
+let faseAtual = 1;
+
 const titleScreen = document.getElementById("title-screen");
 const titleStartBtn = document.getElementById("title-start-btn");
 const startBtn = document.getElementById("start-btn");
@@ -110,10 +113,6 @@ function showResult() {
     navigator.clipboard.writeText(window.location.href + "#resultado");
     alert("Link copiado para a área de transferência!");
   };
-  sendEmailBtn.onclick = () => {
-    sendResultsByEmail();
-    alert("Resultado enviado por email!");
-  };
 }
 
 function generatePhaseAnalysis(phaseNumber) {
@@ -143,6 +142,20 @@ function sendResultsByEmail() {
   emailjs.send("default_service", "template_default", emailContent)
     .then(() => console.log("Email enviado"))
     .catch(err => console.error("Erro ao enviar email", err));
+}
+
+respostasPorFase.push(answer);
+
+if (currentQuestionIndex % 20 === 0) {
+  const resumo = gerarResumoDaFase(faseAtual, respostasPorFase);
+  document.getElementById("phase-summary-text").textContent = resumo;
+
+  questionScreen.classList.add("hidden");
+  document.getElementById("phase-summary").classList.remove("hidden");
+
+  faseAtual++;
+  respostasPorFase = [];
+  return;
 }
 
 function gerarResumoDaFase(faseAtual, respostasFase) {
