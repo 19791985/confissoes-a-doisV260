@@ -133,6 +133,28 @@ function sendResultsByEmail() {
     .catch(err => console.error("Erro ao enviar email", err));
 }
 
+function gerarResumoDaFase(faseAtual, respostasFase) {
+  let total = respostasFase.reduce((acc, curr) => {
+    acc[curr.value] = (acc[curr.value] || 0) + 1;
+    return acc;
+  }, {});
+
+  let texto = "";
+
+  if (faseAtual === 1) {
+    if ((total["emocao"] || 0) >= 10) {
+      texto = `Nesta primeira fase do quiz, revelaste um forte apego emocional à tua ligação. Valorizas gestos que não se veem, mas que se sentem profundamente. O teu olhar para o amor é mais sobre entrega emocional do que atos físicos. A tua forma de amar passa pela escuta, pelo cuidado e por pequenos detalhes que constroem a base da relação. Preferes o conforto de um silêncio cúmplice ao espetáculo das palavras. Ao longo desta fase, mostraste que, para ti, a verdadeira intimidade começa quando há vulnerabilidade e presença. O teu afeto manifesta-se na profundidade dos gestos e no querer constante de estar perto.`;
+    } else {
+      texto = `A tua abordagem emocional mistura carinho e desejo, revelando que procuras mais do que simples afeto. Tens uma tendência equilibrada entre vulnerabilidade e sedução emocional. Procuras toques que falam mais que palavras e gestos que confirmam promessas. Nesta fase, ficou claro que valorizas o tempo partilhado e os olhares sinceros. O teu conceito de ligação envolve respeito e atenção aos detalhes. Desejas mais do que ouvir: queres sentir, ver e ser sentido(a).`;
+    }
+  }
+
+  return texto;
+}
+
+let respostasPorFase = [];
+let faseAtual = 1;
+
 const phases = [
   {
     title: "Fase 1: Conexão Emocional",
@@ -363,6 +385,18 @@ const phases = [
       { text: "Amor", value: "emocao" }
     ]
   },
+
+    if (currentQuestionIndex % 20 === 0) {
+  const resumo = gerarResumoDaFase(faseAtual, respostasPorFase);
+  document.getElementById("phase-summary-text").textContent = resumo;
+
+  questionScreen.classList.add("hidden");
+  document.getElementById("phase-summary").classList.remove("hidden");
+
+  faseAtual++;
+  respostasPorFase = [];
+}
+    
   {
     question: "21. Quando te sentes mais seguro(a) comigo?",
     answers: [
@@ -563,6 +597,18 @@ const phases = [
       { text: "Não esconder nada", value: "seguranca" }
     ]
   },
+
+  if (currentQuestionIndex % 20 === 0) {
+  const resumo = gerarResumoDaFase(faseAtual, respostasPorFase);
+  document.getElementById("phase-summary-text").textContent = resumo;
+
+  questionScreen.classList.add("hidden");
+  document.getElementById("phase-summary").classList.remove("hidden");
+
+  faseAtual++;
+  respostasPorFase = [];
+}
+
   {
     question: "41. O que mais desperta o teu desejo?",
     answers: [
@@ -763,6 +809,18 @@ const phases = [
       { text: "Perceber que estás no controlo", value: "curiosidade" }
     ]
   },
+
+if (currentQuestionIndex % 20 === 0) {
+  const resumo = gerarResumoDaFase(faseAtual, respostasPorFase);
+  document.getElementById("phase-summary-text").textContent = resumo;
+
+  questionScreen.classList.add("hidden");
+  document.getElementById("phase-summary").classList.remove("hidden");
+
+  faseAtual++;
+  respostasPorFase = [];
+}
+
   {
     question: "61. Qual destas fantasias te intriga mais?",
     answers: [
@@ -963,6 +1021,18 @@ const phases = [
       { text: "Levar ordens e obedecer gemendo", value: "submissao" }
     ]
   },
+
+  if (currentQuestionIndex % 20 === 0) {
+  const resumo = gerarResumoDaFase(faseAtual, respostasPorFase);
+  document.getElementById("phase-summary-text").textContent = resumo;
+
+  questionScreen.classList.add("hidden");
+  document.getElementById("phase-summary").classList.remove("hidden");
+
+  faseAtual++;
+  respostasPorFase = [];
+}
+
   {
     question: "81. Quando pensas em engolir tudo até ao fim, sentes...",
     answers: [
@@ -1162,7 +1232,19 @@ const phases = [
       { text: "Ficava excitado(a), mas tímido(a)", value: "dirty_curioso" },
       { text: "Não gosto dessas palavras", value: "dirty_fora" }
     ]
-  },   
+  },
+
+  if (currentQuestionIndex % 20 === 0) {
+  const resumo = gerarResumoDaFase(faseAtual, respostasPorFase);
+  document.getElementById("phase-summary-text").textContent = resumo;
+
+  questionScreen.classList.add("hidden");
+  document.getElementById("phase-summary").classList.remove("hidden");
+
+  faseAtual++;
+  respostasPorFase = [];
+}
+
   {
     question: "101. O que representa verdadeira cumplicidade para ti?",
     answers: [
@@ -1363,4 +1445,16 @@ const phases = [
       { text: "Mais intensa sexualmente", value: "cumplicidade" }
     ]
   }
+
+  if (currentQuestionIndex % 20 === 0) {
+  const resumo = gerarResumoDaFase(faseAtual, respostasPorFase);
+  document.getElementById("phase-summary-text").textContent = resumo;
+
+  questionScreen.classList.add("hidden");
+  document.getElementById("phase-summary").classList.remove("hidden");
+
+  faseAtual++;
+  respostasPorFase = [];
+}
+
 ];
