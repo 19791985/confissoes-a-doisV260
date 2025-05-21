@@ -8,6 +8,14 @@ let respostasPorFase = [];
 let faseAtual = 1;
 
 const titleScreen = document.getElementById("title-screen");
+const introScreen = document.getElementById("intro");
+const titleStartBtn = document.getElementById("title-start-btn");
+
+titleStartBtn.onclick = () => {
+  titleScreen.classList.add("hidden");
+  introScreen.classList.remove("hidden");
+};
+const titleScreen = document.getElementById("title-screen");
 const titleStartBtn = document.getElementById("title-start-btn");
 const startBtn = document.getElementById("start-btn");
 const introScreen = document.getElementById("intro");
