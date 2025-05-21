@@ -18,6 +18,9 @@ titleStartBtn.onclick = () => {
 const titleScreen = document.getElementById("title-screen");
 const titleStartBtn = document.getElementById("title-start-btn");
 const startBtn = document.getElementById("start-btn");
+const titleScreen = document.getElementById("title-screen");
+const introScreen = document.getElementById("intro");
+const introStartBtn = document.getElementById("intro-start-btn");
 const introScreen = document.getElementById("intro");
 const phaseSummaryScreen = document.getElementById("phase-summary");
 const quizContainer = document.getElementById("quiz-container");
@@ -44,9 +47,13 @@ titleStartBtn.onclick = () => {
 };
 
 startBtn.onclick = () => {
-  introScreen.classList.remove("active");
-  quizContainer.classList.remove("hidden");
-  quizContainer.classList.add("active");
+  titleScreen.classList.add("hidden");
+  introScreen.classList.remove("hidden");
+};
+
+introStartBtn.onclick = () => {
+  introScreen.classList.add("hidden");
+  document.getElementById("question-screen").classList.remove("hidden");
   showQuestion();
 };
 
