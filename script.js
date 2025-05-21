@@ -51,6 +51,12 @@ continueBtn.onclick = () => {
   showQuestion();
 };
 
+document.getElementById("next-phase-btn").onclick = () => {
+  document.getElementById("phase-summary").classList.add("hidden");
+  document.getElementById("question-screen").classList.remove("hidden");
+  showQuestion();
+};
+
 function showQuestion() {
   const q = questions[currentQuestionIndex];
   questionEl.textContent = q.question;
