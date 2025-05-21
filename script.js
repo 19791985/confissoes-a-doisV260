@@ -1,7 +1,6 @@
-
 // Inicialização EmailJS
-(function() {
-  emailjs.init("user_demoKEY"); // substituir por o teu user ID real do EmailJS
+(function () {
+  emailjs.init("user_demoKEY"); // Substituir pela tua user ID real
 })();
 
 let respostasPorFase = [];
@@ -9,69 +8,39 @@ let faseAtual = 1;
 
 const titleScreen = document.getElementById("title-screen");
 const introScreen = document.getElementById("intro");
-const titleStartBtn = document.getElementById("title-start-btn");
-
-titleStartBtn.onclick = () => {
-  titleScreen.classList.add("hidden");
-  introScreen.classList.remove("hidden");
-};
-const titleScreen = document.getElementById("title-screen");
-const titleStartBtn = document.getElementById("title-start-btn");
 const startBtn = document.getElementById("start-btn");
-const titleScreen = document.getElementById("title-screen");
-const introScreen = document.getElementById("intro");
 const introStartBtn = document.getElementById("intro-start-btn");
-const introScreen = document.getElementById("intro");
-const phaseSummaryScreen = document.getElementById("phase-summary");
+
 const quizContainer = document.getElementById("quiz-container");
 const questionEl = document.getElementById("question");
 const answersEl = document.getElementById("answers");
+
+const phaseSummaryScreen = document.getElementById("phase-summary");
 const resultScreen = document.getElementById("result");
 const summaryEl = document.getElementById("summary");
+
 const continueBtn = document.getElementById("continue-btn");
 const shareWhatsappBtn = document.getElementById("share-whatsapp");
 const copyLinkBtn = document.getElementById("copy-link");
 const sendEmailBtn = document.getElementById("send-email");
 
-let currentPhase = 0;
-let currentQuestionIndex = 0;
-let results = [];
-let phaseSummaries = [];
-
-const questionsPerPhase = 20;
-
-titleStartBtn.onclick = () => {
-  titleScreen.classList.remove("active");
-  introScreen.classList.remove("hidden");
-  introScreen.classList.add("active");
-};
-
+// Começar: Do título para a introdução
 startBtn.onclick = () => {
   titleScreen.classList.add("hidden");
   introScreen.classList.remove("hidden");
 };
 
+// Da introdução para o quiz
 introStartBtn.onclick = () => {
   introScreen.classList.add("hidden");
-  document.getElementById("question-screen").classList.remove("hidden");
+  quizContainer.classList.remove("hidden");
   showQuestion();
 };
 
+// Avançar para a próxima fase depois do resumo
 document.getElementById("next-phase-btn").onclick = () => {
-  document.getElementById("phase-summary").classList.add("hidden");
-  questionScreen.classList.remove("hidden");
-  showQuestion(); // Continua o quiz com as perguntas seguintes
-};
-
-continueBtn.onclick = () => {
-  phaseSummaryScreen.classList.remove("active");
-  quizContainer.classList.add("active");
-  showQuestion();
-};
-
-document.getElementById("next-phase-btn").onclick = () => {
-  document.getElementById("phase-summary").classList.add("hidden");
-  document.getElementById("question-screen").classList.remove("hidden");
+  phaseSummaryScreen.classList.add("hidden");
+  quizContainer.classList.remove("hidden");
   showQuestion();
 };
 
