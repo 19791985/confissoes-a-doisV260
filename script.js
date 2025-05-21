@@ -39,6 +39,12 @@ startBtn.onclick = () => {
   showQuestion();
 };
 
+document.getElementById("next-phase-btn").onclick = () => {
+  document.getElementById("phase-summary").classList.add("hidden");
+  questionScreen.classList.remove("hidden");
+  showQuestion(); // Continua o quiz com as perguntas seguintes
+};
+
 continueBtn.onclick = () => {
   phaseSummaryScreen.classList.remove("active");
   quizContainer.classList.add("active");
